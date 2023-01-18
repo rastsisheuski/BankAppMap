@@ -9,24 +9,29 @@ import Foundation
 import Moya
 
 enum APIManager {
-    case getCurrencyExchange(city: String)
+    case atms
+    case departments
 }
 
 extension APIManager: TargetType {
     var baseURL: URL {
-        return URL(string: "https://belarusbank.by/")!
+        return URL(string: "https://belarusbank.by/api/")!
     }
     
     var path: String {
         switch self {
-            case .getCurrencyExchange:
-                return "api/atm"
+            case .atms:
+                return "atm"
+            case .departments:
+                return "filials_info"
         }
     }
     
     var method: Moya.Method {
         switch self {
-            case .getCurrencyExchange:
+            case .atms:
+                return .get
+            case .departments:
                 return .get
         }
     }
@@ -40,25 +45,19 @@ extension APIManager: TargetType {
     }
     
     var task: Moya.Task {
-        guard let parametres else {
-            return .requestPlain
-        }
-        return .requestParameters(parameters: parametres, encoding: encoding)
-    }
-    
-    var parametres: [String: Any]? {
-        var params = [String: Any]()
-        
         switch self {
-            case .getCurrencyExchange(let city):
-                params["city"] = city
+            case .atms:
+                return .requestPlain
+            case .departments:
+                return .requestPlain
         }
-        return params
     }
     
     var encoding: ParameterEncoding {
         switch self {
-            case .getCurrencyExchange:
+            case .atms:
+                return URLEncoding.queryString
+            case .departments:
                 return URLEncoding.queryString
         }
     }

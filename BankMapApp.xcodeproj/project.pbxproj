@@ -10,27 +10,35 @@
 		47CB5D00BCDCBB0475C5E058 /* Pods_BankMapApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDF807D4667086720E7D7321 /* Pods_BankMapApp.framework */; };
 		97528577297700F100FE84BA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97528576297700F100FE84BA /* AppDelegate.swift */; };
 		97528579297700F100FE84BA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97528578297700F100FE84BA /* SceneDelegate.swift */; };
-		9752857B297700F100FE84BA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9752857A297700F100FE84BA /* ViewController.swift */; };
+		9752857B297700F100FE84BA /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9752857A297700F100FE84BA /* MapViewController.swift */; };
 		9752857E297700F100FE84BA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9752857C297700F100FE84BA /* Main.storyboard */; };
 		97528580297700F300FE84BA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9752857F297700F300FE84BA /* Assets.xcassets */; };
 		97528583297700F300FE84BA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97528581297700F300FE84BA /* LaunchScreen.storyboard */; };
 		9752858C2977037800FE84BA /* CurrencyExchangeProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9752858B2977037800FE84BA /* CurrencyExchangeProvider.swift */; };
-		9752858F2977039E00FE84BA /* CurrencyExchangeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9752858E2977039E00FE84BA /* CurrencyExchangeModel.swift */; };
+		9752858F2977039E00FE84BA /* ATMModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9752858E2977039E00FE84BA /* ATMModel.swift */; };
 		97528592297703B400FE84BA /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97528591297703B400FE84BA /* APIManager.swift */; };
+		9752859629770FF200FE84BA /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9752859429770FF200FE84BA /* CollectionViewCell.swift */; };
+		9752859729770FF200FE84BA /* CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9752859529770FF200FE84BA /* CollectionViewCell.xib */; };
+		9752859C297713AB00FE84BA /* DepartmentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9752859B297713AB00FE84BA /* DepartmentModel.swift */; };
+		9752859E29771EAF00FE84BA /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9752859D29771EAF00FE84BA /* ProfileViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		97528573297700F100FE84BA /* BankMapApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BankMapApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		97528576297700F100FE84BA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		97528578297700F100FE84BA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		9752857A297700F100FE84BA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		9752857A297700F100FE84BA /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		9752857D297700F100FE84BA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9752857F297700F300FE84BA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		97528582297700F300FE84BA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		97528584297700F300FE84BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9752858B2977037800FE84BA /* CurrencyExchangeProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyExchangeProvider.swift; sourceTree = "<group>"; };
-		9752858E2977039E00FE84BA /* CurrencyExchangeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyExchangeModel.swift; sourceTree = "<group>"; };
+		9752858E2977039E00FE84BA /* ATMModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATMModel.swift; sourceTree = "<group>"; };
 		97528591297703B400FE84BA /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		9752859429770FF200FE84BA /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		9752859529770FF200FE84BA /* CollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionViewCell.xib; sourceTree = "<group>"; };
+		9752859B297713AB00FE84BA /* DepartmentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepartmentModel.swift; sourceTree = "<group>"; };
+		9752859D29771EAF00FE84BA /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		B4C11C942B5204CDFA87AFDA /* Pods-BankMapApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BankMapApp.debug.xcconfig"; path = "Target Support Files/Pods-BankMapApp/Pods-BankMapApp.debug.xcconfig"; sourceTree = "<group>"; };
 		CDF807D4667086720E7D7321 /* Pods_BankMapApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BankMapApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F23E76B773D6880E4ECB5D4A /* Pods-BankMapApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BankMapApp.release.xcconfig"; path = "Target Support Files/Pods-BankMapApp/Pods-BankMapApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -78,12 +86,14 @@
 		97528575297700F100FE84BA /* BankMapApp */ = {
 			isa = PBXGroup;
 			children = (
+				9752859329770FBD00FE84BA /* Cells */,
 				97528590297703AD00FE84BA /* Managers */,
 				9752858D2977038A00FE84BA /* Models */,
 				9752858A2977036800FE84BA /* Providers */,
 				97528576297700F100FE84BA /* AppDelegate.swift */,
 				97528578297700F100FE84BA /* SceneDelegate.swift */,
-				9752857A297700F100FE84BA /* ViewController.swift */,
+				9752857A297700F100FE84BA /* MapViewController.swift */,
+				9752859D29771EAF00FE84BA /* ProfileViewController.swift */,
 				9752857C297700F100FE84BA /* Main.storyboard */,
 				9752857F297700F300FE84BA /* Assets.xcassets */,
 				97528581297700F300FE84BA /* LaunchScreen.storyboard */,
@@ -103,7 +113,8 @@
 		9752858D2977038A00FE84BA /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				9752858E2977039E00FE84BA /* CurrencyExchangeModel.swift */,
+				9752858E2977039E00FE84BA /* ATMModel.swift */,
+				9752859B297713AB00FE84BA /* DepartmentModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -114,6 +125,15 @@
 				97528591297703B400FE84BA /* APIManager.swift */,
 			);
 			path = Managers;
+			sourceTree = "<group>";
+		};
+		9752859329770FBD00FE84BA /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				9752859429770FF200FE84BA /* CollectionViewCell.swift */,
+				9752859529770FF200FE84BA /* CollectionViewCell.xib */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		F8B760FBC2217F9D8FF14EF5 /* Frameworks */ = {
@@ -187,6 +207,7 @@
 			files = (
 				97528583297700F300FE84BA /* LaunchScreen.storyboard in Resources */,
 				97528580297700F300FE84BA /* Assets.xcassets in Resources */,
+				9752859729770FF200FE84BA /* CollectionViewCell.xib in Resources */,
 				9752857E297700F100FE84BA /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -258,10 +279,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				97528592297703B400FE84BA /* APIManager.swift in Sources */,
-				9752857B297700F100FE84BA /* ViewController.swift in Sources */,
+				9752857B297700F100FE84BA /* MapViewController.swift in Sources */,
 				97528577297700F100FE84BA /* AppDelegate.swift in Sources */,
+				9752859629770FF200FE84BA /* CollectionViewCell.swift in Sources */,
 				9752858C2977037800FE84BA /* CurrencyExchangeProvider.swift in Sources */,
-				9752858F2977039E00FE84BA /* CurrencyExchangeModel.swift in Sources */,
+				9752859C297713AB00FE84BA /* DepartmentModel.swift in Sources */,
+				9752859E29771EAF00FE84BA /* ProfileViewController.swift in Sources */,
+				9752858F2977039E00FE84BA /* ATMModel.swift in Sources */,
 				97528579297700F100FE84BA /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

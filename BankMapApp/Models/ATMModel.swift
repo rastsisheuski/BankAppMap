@@ -8,10 +8,10 @@
 import Foundation
 import ObjectMapper
 
-final class CurrencyExchangeModel: Mappable {
+final class ATMModel: Mappable {
     var gpsX: String = ""
     var gpsY: String = ""
-    var area: String = ""
+    var city: String = ""
     var adressType: String = ""
     var adress : String = ""
     var house: String = ""
@@ -26,7 +26,7 @@ final class CurrencyExchangeModel: Mappable {
     func mapping(map: ObjectMapper.Map) {
         gpsX            <- map["gps_x"]
         gpsY            <- map["gps_y"]
-        area            <- map["area"]
+        city            <- map["city"]
         adressType      <- map["address_type"]
         adress          <- map["address"]
         house           <- map["house"]

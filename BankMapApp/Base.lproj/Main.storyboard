@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="AwP-NQ-WEL">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="H6S-Hw-cA1">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
@@ -8,19 +8,19 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Map-->
         <scene sceneID="XkO-q0-imH">
             <objects>
-                <viewController id="AwP-NQ-WEL" customClass="ViewController" customModule="BankMapApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="AwP-NQ-WEL" customClass="MapViewController" customModule="BankMapApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rL0-lO-kjb">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kni-WR-7uc" customClass="GMSMapView">
-                                <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                                <rect key="frame" x="0.0" y="59" width="393" height="590"/>
                                 <subviews>
                                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="xlI-Aa-eca">
-                                        <rect key="frame" x="186.66666666666666" y="369.66666666666669" width="20" height="20"/>
+                                        <rect key="frame" x="186.66666666666666" y="285" width="20" height="20"/>
                                     </activityIndicatorView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -29,27 +29,101 @@
                                     <constraint firstItem="xlI-Aa-eca" firstAttribute="centerX" secondItem="Kni-WR-7uc" secondAttribute="centerX" id="yW5-FW-OLe"/>
                                 </constraints>
                             </view>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="bbZ-Qn-Frd" userLabel="CitiesCollection">
+                                <rect key="frame" x="0.0" y="649" width="393" height="60"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="gCk-r4-t2H"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="nne-x8-sbp">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="GY2-bh-LGu" userLabel="FilterCollection">
+                                <rect key="frame" x="0.0" y="709" width="393" height="60"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="ZlY-F9-eOf"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="bn6-FC-jlN">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Gqr-1a-Ihn"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Gqr-1a-Ihn" firstAttribute="trailing" secondItem="Kni-WR-7uc" secondAttribute="trailing" id="IHI-Nv-YTG"/>
-                            <constraint firstItem="Gqr-1a-Ihn" firstAttribute="bottom" secondItem="Kni-WR-7uc" secondAttribute="bottom" id="Zv9-ct-A9P"/>
-                            <constraint firstItem="Kni-WR-7uc" firstAttribute="top" secondItem="Gqr-1a-Ihn" secondAttribute="top" id="lIY-eQ-neQ"/>
-                            <constraint firstItem="Kni-WR-7uc" firstAttribute="leading" secondItem="Gqr-1a-Ihn" secondAttribute="leading" id="ptN-FI-7iB"/>
+                            <constraint firstItem="Kni-WR-7uc" firstAttribute="leading" secondItem="Gqr-1a-Ihn" secondAttribute="leading" id="8Jj-SW-Yq7"/>
+                            <constraint firstItem="GY2-bh-LGu" firstAttribute="bottom" secondItem="Gqr-1a-Ihn" secondAttribute="bottom" id="Fft-aH-VIR"/>
+                            <constraint firstItem="GY2-bh-LGu" firstAttribute="leading" secondItem="Gqr-1a-Ihn" secondAttribute="leading" id="Qnw-Wb-Brh"/>
+                            <constraint firstItem="Kni-WR-7uc" firstAttribute="trailing" secondItem="Gqr-1a-Ihn" secondAttribute="trailing" id="TfS-Xa-lDJ"/>
+                            <constraint firstItem="GY2-bh-LGu" firstAttribute="trailing" secondItem="Gqr-1a-Ihn" secondAttribute="trailing" id="VMj-IF-Gdc"/>
+                            <constraint firstItem="bbZ-Qn-Frd" firstAttribute="leading" secondItem="Gqr-1a-Ihn" secondAttribute="leading" id="Zvs-Gq-hCl"/>
+                            <constraint firstItem="GY2-bh-LGu" firstAttribute="top" secondItem="bbZ-Qn-Frd" secondAttribute="bottom" id="a0B-ds-t3O"/>
+                            <constraint firstItem="Kni-WR-7uc" firstAttribute="top" secondItem="Gqr-1a-Ihn" secondAttribute="top" id="bHH-6Q-TdL"/>
+                            <constraint firstItem="bbZ-Qn-Frd" firstAttribute="top" secondItem="Kni-WR-7uc" secondAttribute="bottom" id="s9q-ju-opL"/>
+                            <constraint firstItem="bbZ-Qn-Frd" firstAttribute="trailing" secondItem="Gqr-1a-Ihn" secondAttribute="trailing" id="xMx-iF-ugW"/>
                         </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Map" image="map" catalog="system" id="TLS-0Z-j3G"/>
                     <connections>
+                        <outlet property="citiesCollection" destination="bbZ-Qn-Frd" id="Aoc-Fo-OSe"/>
+                        <outlet property="filterCollection" destination="GY2-bh-LGu" id="h0y-hG-Kr7"/>
                         <outlet property="mapView" destination="Kni-WR-7uc" id="Teg-bp-1VL"/>
                         <outlet property="spinnerView" destination="xlI-Aa-eca" id="dLF-ki-PLk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RY2-AZ-Wwz" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="211" y="6"/>
+            <point key="canvasLocation" x="1113.7404580152672" y="-235.21126760563382"/>
+        </scene>
+        <!--Profile-->
+        <scene sceneID="cis-SC-A9M">
+            <objects>
+                <viewController id="KCd-Lp-0J6" customClass="ProfileViewController" customModule="BankMapApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Sl9-5R-eno">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="XjW-W2-MgK"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Profile" image="person" catalog="system" id="MQX-P0-4cg"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3Ay-Cb-LMk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1114" y="459"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="z6r-jn-oyT">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="H6S-Hw-cA1" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="dkF-1c-V4D">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="AwP-NQ-WEL" kind="relationship" relationship="viewControllers" id="hd4-4R-NS2"/>
+                        <segue destination="KCd-Lp-0J6" kind="relationship" relationship="viewControllers" id="BEm-ZC-jgs"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1HC-Rd-A8e" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="209.92366412213741" y="5.6338028169014089"/>
         </scene>
     </scenes>
     <resources>
+        <image name="map" catalog="system" width="128" height="112"/>
+        <image name="person" catalog="system" width="128" height="121"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
