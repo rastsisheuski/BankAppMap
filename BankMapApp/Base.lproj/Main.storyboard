@@ -18,17 +18,12 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kni-WR-7uc" customClass="GMSMapView">
                                 <rect key="frame" x="0.0" y="59" width="393" height="590"/>
-                                <subviews>
-                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="xlI-Aa-eca">
-                                        <rect key="frame" x="186.66666666666666" y="285" width="20" height="20"/>
-                                    </activityIndicatorView>
-                                </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstItem="xlI-Aa-eca" firstAttribute="centerY" secondItem="Kni-WR-7uc" secondAttribute="centerY" id="JGo-FW-Oa5"/>
-                                    <constraint firstItem="xlI-Aa-eca" firstAttribute="centerX" secondItem="Kni-WR-7uc" secondAttribute="centerX" id="yW5-FW-OLe"/>
-                                </constraints>
                             </view>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="xlI-Aa-eca">
+                                <rect key="frame" x="178" y="335.66666666666669" width="37" height="37"/>
+                                <color key="color" systemColor="systemRedColor"/>
+                            </activityIndicatorView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="bbZ-Qn-Frd" userLabel="CitiesCollection">
                                 <rect key="frame" x="0.0" y="649" width="393" height="60"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -63,9 +58,11 @@
                         <constraints>
                             <constraint firstItem="Kni-WR-7uc" firstAttribute="leading" secondItem="Gqr-1a-Ihn" secondAttribute="leading" id="8Jj-SW-Yq7"/>
                             <constraint firstItem="GY2-bh-LGu" firstAttribute="bottom" secondItem="Gqr-1a-Ihn" secondAttribute="bottom" id="Fft-aH-VIR"/>
+                            <constraint firstItem="xlI-Aa-eca" firstAttribute="centerX" secondItem="Kni-WR-7uc" secondAttribute="centerX" id="IjJ-cP-xYX"/>
                             <constraint firstItem="GY2-bh-LGu" firstAttribute="leading" secondItem="Gqr-1a-Ihn" secondAttribute="leading" id="Qnw-Wb-Brh"/>
                             <constraint firstItem="Kni-WR-7uc" firstAttribute="trailing" secondItem="Gqr-1a-Ihn" secondAttribute="trailing" id="TfS-Xa-lDJ"/>
                             <constraint firstItem="GY2-bh-LGu" firstAttribute="trailing" secondItem="Gqr-1a-Ihn" secondAttribute="trailing" id="VMj-IF-Gdc"/>
+                            <constraint firstItem="xlI-Aa-eca" firstAttribute="centerY" secondItem="Kni-WR-7uc" secondAttribute="centerY" id="W0b-Zi-Nv8"/>
                             <constraint firstItem="bbZ-Qn-Frd" firstAttribute="leading" secondItem="Gqr-1a-Ihn" secondAttribute="leading" id="Zvs-Gq-hCl"/>
                             <constraint firstItem="GY2-bh-LGu" firstAttribute="top" secondItem="bbZ-Qn-Frd" secondAttribute="bottom" id="a0B-ds-t3O"/>
                             <constraint firstItem="Kni-WR-7uc" firstAttribute="top" secondItem="Gqr-1a-Ihn" secondAttribute="top" id="bHH-6Q-TdL"/>
@@ -126,6 +123,9 @@
         <image name="person" catalog="system" width="128" height="121"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

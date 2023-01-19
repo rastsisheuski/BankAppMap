@@ -9,8 +9,10 @@ import Foundation
 import Moya
 
 enum APIManager {
-    case atms
-    case departments
+    case getATMsCities
+    case getDepartmentCities
+    case getATMsDetails(city: String?)
+    case getDepartmentDetails(city: String?)
 }
 
 extension APIManager: TargetType {
@@ -20,18 +22,16 @@ extension APIManager: TargetType {
     
     var path: String {
         switch self {
-            case .atms:
+            case .getATMsCities, .getATMsDetails:
                 return "atm"
-            case .departments:
+            case .getDepartmentCities, .getDepartmentDetails:
                 return "filials_info"
         }
     }
     
     var method: Moya.Method {
         switch self {
-            case .atms:
-                return .get
-            case .departments:
+            case .getATMsCities, .getDepartmentCities, .getATMsDetails, .getDepartmentDetails:
                 return .get
         }
     }
@@ -45,19 +45,26 @@ extension APIManager: TargetType {
     }
     
     var task: Moya.Task {
+        guard let parameters else { return .requestPlain }
+        return .requestParameters(parameters: parameters, encoding: encoding)
+    }
+    
+    var parameters: [String : Any]? {
+        var params = [String: Any]()
         switch self {
-            case .atms:
-                return .requestPlain
-            case .departments:
-                return .requestPlain
-        }
+            case .getATMsDetails(let city):
+                params["city"] = city
+            case .getDepartmentDetails(let city):
+                params["city"] = city
+            case .getATMsCities, .getDepartmentCities:
+                return nil
+        } 
+        return params
     }
     
     var encoding: ParameterEncoding {
         switch self {
-            case .atms:
-                return URLEncoding.queryString
-            case .departments:
+            case .getATMsCities, .getDepartmentCities, .getATMsDetails, .getDepartmentDetails:
                 return URLEncoding.queryString
         }
     }

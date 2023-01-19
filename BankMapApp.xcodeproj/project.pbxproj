@@ -21,6 +21,7 @@
 		9752859729770FF200FE84BA /* CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9752859529770FF200FE84BA /* CollectionViewCell.xib */; };
 		9752859C297713AB00FE84BA /* DepartmentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9752859B297713AB00FE84BA /* DepartmentModel.swift */; };
 		9752859E29771EAF00FE84BA /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9752859D29771EAF00FE84BA /* ProfileViewController.swift */; };
+		97B6299F29797C6F000F6CA0 /* FilteredButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97B6299E29797C6F000F6CA0 /* FilteredButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,7 @@
 		9752859529770FF200FE84BA /* CollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionViewCell.xib; sourceTree = "<group>"; };
 		9752859B297713AB00FE84BA /* DepartmentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepartmentModel.swift; sourceTree = "<group>"; };
 		9752859D29771EAF00FE84BA /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		97B6299E29797C6F000F6CA0 /* FilteredButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteredButton.swift; sourceTree = "<group>"; };
 		B4C11C942B5204CDFA87AFDA /* Pods-BankMapApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BankMapApp.debug.xcconfig"; path = "Target Support Files/Pods-BankMapApp/Pods-BankMapApp.debug.xcconfig"; sourceTree = "<group>"; };
 		CDF807D4667086720E7D7321 /* Pods_BankMapApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BankMapApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F23E76B773D6880E4ECB5D4A /* Pods-BankMapApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BankMapApp.release.xcconfig"; path = "Target Support Files/Pods-BankMapApp/Pods-BankMapApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -86,14 +88,14 @@
 		97528575297700F100FE84BA /* BankMapApp */ = {
 			isa = PBXGroup;
 			children = (
+				97B629A02979A1A0000F6CA0 /* Controllers */,
+				97B6299D29797C5E000F6CA0 /* Enums */,
 				9752859329770FBD00FE84BA /* Cells */,
 				97528590297703AD00FE84BA /* Managers */,
 				9752858D2977038A00FE84BA /* Models */,
 				9752858A2977036800FE84BA /* Providers */,
 				97528576297700F100FE84BA /* AppDelegate.swift */,
 				97528578297700F100FE84BA /* SceneDelegate.swift */,
-				9752857A297700F100FE84BA /* MapViewController.swift */,
-				9752859D29771EAF00FE84BA /* ProfileViewController.swift */,
 				9752857C297700F100FE84BA /* Main.storyboard */,
 				9752857F297700F300FE84BA /* Assets.xcassets */,
 				97528581297700F300FE84BA /* LaunchScreen.storyboard */,
@@ -134,6 +136,23 @@
 				9752859529770FF200FE84BA /* CollectionViewCell.xib */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		97B6299D29797C5E000F6CA0 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				97B6299E29797C6F000F6CA0 /* FilteredButton.swift */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
+		97B629A02979A1A0000F6CA0 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				9752859D29771EAF00FE84BA /* ProfileViewController.swift */,
+				9752857A297700F100FE84BA /* MapViewController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		F8B760FBC2217F9D8FF14EF5 /* Frameworks */ = {
@@ -282,6 +301,7 @@
 				9752857B297700F100FE84BA /* MapViewController.swift in Sources */,
 				97528577297700F100FE84BA /* AppDelegate.swift in Sources */,
 				9752859629770FF200FE84BA /* CollectionViewCell.swift in Sources */,
+				97B6299F29797C6F000F6CA0 /* FilteredButton.swift in Sources */,
 				9752858C2977037800FE84BA /* CurrencyExchangeProvider.swift in Sources */,
 				9752859C297713AB00FE84BA /* DepartmentModel.swift in Sources */,
 				9752859E29771EAF00FE84BA /* ProfileViewController.swift in Sources */,
@@ -437,6 +457,10 @@
 				DEVELOPMENT_TEAM = 3Q7G5DB7T3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BankMapApp/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Where are you";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Where are you";
+				INFOPLIST_KEY_NSLocationUsageDescription = "Where are you";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Where are you";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -466,6 +490,10 @@
 				DEVELOPMENT_TEAM = 3Q7G5DB7T3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BankMapApp/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Where are you";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Where are you";
+				INFOPLIST_KEY_NSLocationUsageDescription = "Where are you";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Where are you";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

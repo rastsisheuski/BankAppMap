@@ -15,11 +15,15 @@ class CollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
 
-//        setupUI()
+        setupUI()
     }
     
     func set(title: String) {
         self.cellLabel.text = title
+        if isSelected {
+            backgroundColor = .white
+            cellLabel.textColor = .red
+        }
     }
     
     private func setupUI() {
@@ -28,9 +32,14 @@ class CollectionViewCell: UICollectionViewCell {
     
     private func setupLabels() {
         cellLabel.font = .systemFont(ofSize: 18, weight: .bold)
-        cellLabel.textColor = .black
+        cellLabel.textColor = .white
         cellLabel.textAlignment = .center
         cellLabel.adjustsFontSizeToFitWidth = true
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        setupUI()
     }
 
 }

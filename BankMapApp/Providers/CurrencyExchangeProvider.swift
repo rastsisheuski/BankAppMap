@@ -9,11 +9,11 @@ import Foundation
 import Moya
 import Moya_ObjectMapper
 
-class CurrencyExchangeProvider {
+final class CurrencyExchangeProvider {
     private let provider = MoyaProvider<APIManager>(plugins: [NetworkLoggerPlugin()])
     
-    func getATMs(currencyBlock: @escaping ([ATMModel]) -> Void, failure: (() -> Void)? = nil) {
-        provider.request(.atms) { result in
+    func getATMs(city: String? = nil, currencyBlock: @escaping ([ATMModel]) -> Void, failure: (() -> Void)? = nil) {
+        provider.request(.getATMsDetails(city: city)) { result in
             switch result {
                 case .success(let responce):
                     guard let currencyExchange = try? responce.mapArray(ATMModel.self) else {
@@ -28,8 +28,8 @@ class CurrencyExchangeProvider {
         }
     }
     
-    func getDepartments(currencyBlock: @escaping ([DepartmentModel]) -> Void, failure: (() -> Void)? = nil) {
-        provider.request(.departments) { result in
+    func getDepartments(city: String? = nil, currencyBlock: @escaping ([DepartmentModel]) -> Void, failure: (() -> Void)? = nil) {
+        provider.request(.getDepartmentDetails(city: city)) { result in
             switch result {
                 case .success(let responce):
                     guard let currencyExchange = try? responce.mapArray(DepartmentModel.self) else {
