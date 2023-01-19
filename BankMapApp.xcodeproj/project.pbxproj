@@ -27,6 +27,7 @@
 		97B629AD2979A9C4000F6CA0 /* GemsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97B629AB2979A9C4000F6CA0 /* GemsTableViewCell.swift */; };
 		97B629AE2979A9C4000F6CA0 /* GemsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 97B629AC2979A9C4000F6CA0 /* GemsTableViewCell.xib */; };
 		97B629B12979AFA2000F6CA0 /* GemsCellTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97B629B02979AFA2000F6CA0 /* GemsCellTitle.swift */; };
+		97B629B32979C1E7000F6CA0 /* IngotModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97B629B22979C1E7000F6CA0 /* IngotModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +52,7 @@
 		97B629AB2979A9C4000F6CA0 /* GemsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GemsTableViewCell.swift; sourceTree = "<group>"; };
 		97B629AC2979A9C4000F6CA0 /* GemsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GemsTableViewCell.xib; sourceTree = "<group>"; };
 		97B629B02979AFA2000F6CA0 /* GemsCellTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GemsCellTitle.swift; sourceTree = "<group>"; };
+		97B629B22979C1E7000F6CA0 /* IngotModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngotModel.swift; sourceTree = "<group>"; };
 		B4C11C942B5204CDFA87AFDA /* Pods-BankMapApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BankMapApp.debug.xcconfig"; path = "Target Support Files/Pods-BankMapApp/Pods-BankMapApp.debug.xcconfig"; sourceTree = "<group>"; };
 		CDF807D4667086720E7D7321 /* Pods_BankMapApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BankMapApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F23E76B773D6880E4ECB5D4A /* Pods-BankMapApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BankMapApp.release.xcconfig"; path = "Target Support Files/Pods-BankMapApp/Pods-BankMapApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 				9752858E2977039E00FE84BA /* ATMModel.swift */,
 				9752859B297713AB00FE84BA /* DepartmentModel.swift */,
 				97B629A72979A4BE000F6CA0 /* GemModel.swift */,
+				97B629B22979C1E7000F6CA0 /* IngotModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -329,6 +332,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				97B629B32979C1E7000F6CA0 /* IngotModel.swift in Sources */,
 				97B629A62979A3CC000F6CA0 /* IngotsViewController.swift in Sources */,
 				97528592297703B400FE84BA /* APIManager.swift in Sources */,
 				9752857B297700F100FE84BA /* MapViewController.swift in Sources */,

@@ -18,58 +18,58 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6AL-yo-GlI">
-                        <rect key="frame" x="16" y="16" width="367" height="166"/>
+                        <rect key="frame" x="5" y="5" width="389" height="188"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="Zb7-AV-jr0">
-                                <rect key="frame" x="0.0" y="0.0" width="367" height="166"/>
+                                <rect key="frame" x="0.0" y="0.0" width="389" height="188"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="HQG-VK-V2Z">
-                                        <rect key="frame" x="0.0" y="0.0" width="367" height="166"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="389" height="188"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Номер аттестата:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PRg-Wd-Pi8">
-                                                <rect key="frame" x="0.0" y="0.0" width="367" height="20.666666666666668"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="389" height="23.666666666666668"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Форма огранки:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P8l-Ra-4gr">
-                                                <rect key="frame" x="0.0" y="20.666666666666664" width="367" height="21"/>
+                                                <rect key="frame" x="0.0" y="23.666666666666671" width="389" height="23.333333333333329"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Количество граней:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ugm-pP-VKX">
-                                                <rect key="frame" x="0.0" y="41.666666666666664" width="367" height="20.666666666666664"/>
+                                                <rect key="frame" x="0.0" y="47" width="389" height="23.666666666666671"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Вес:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ade-iP-NPH">
-                                                <rect key="frame" x="0.0" y="62.333333333333321" width="367" height="20.666666666666664"/>
+                                                <rect key="frame" x="0.0" y="70.666666666666671" width="389" height="23.333333333333329"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Цвет:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cMW-9Y-9Ra">
-                                                <rect key="frame" x="0.0" y="83" width="367" height="20.666666666666671"/>
+                                                <rect key="frame" x="0.0" y="94" width="389" height="23.666666666666671"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Город:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S75-4C-NSR">
-                                                <rect key="frame" x="0.0" y="103.66666666666667" width="367" height="21"/>
+                                                <rect key="frame" x="0.0" y="117.66666666666667" width="389" height="23.333333333333329"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Номер отделения:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rzq-F6-8vz">
-                                                <rect key="frame" x="0.0" y="124.66666666666667" width="367" height="20.666666666666671"/>
+                                                <rect key="frame" x="0.0" y="141" width="389" height="23.666666666666657"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Цена:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oHC-Bt-dLF">
-                                                <rect key="frame" x="0.0" y="145.33333333333334" width="367" height="20.666666666666657"/>
+                                                <rect key="frame" x="0.0" y="164.66666666666666" width="389" height="23.333333333333343"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -89,10 +89,10 @@
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="6AL-yo-GlI" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="2kg-V8-xVe"/>
-                    <constraint firstAttribute="bottom" secondItem="6AL-yo-GlI" secondAttribute="bottom" constant="16" id="6Uh-y5-UgT"/>
-                    <constraint firstItem="6AL-yo-GlI" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="Qha-F6-cc5"/>
-                    <constraint firstAttribute="trailing" secondItem="6AL-yo-GlI" secondAttribute="trailing" constant="16" id="fu9-yj-7lC"/>
+                    <constraint firstItem="6AL-yo-GlI" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="2kg-V8-xVe"/>
+                    <constraint firstAttribute="bottom" secondItem="6AL-yo-GlI" secondAttribute="bottom" constant="5" id="6Uh-y5-UgT"/>
+                    <constraint firstItem="6AL-yo-GlI" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="Qha-F6-cc5"/>
+                    <constraint firstAttribute="trailing" secondItem="6AL-yo-GlI" secondAttribute="trailing" constant="5" id="fu9-yj-7lC"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>

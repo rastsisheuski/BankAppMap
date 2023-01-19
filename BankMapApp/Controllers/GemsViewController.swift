@@ -10,8 +10,9 @@ import UIKit
 class GemsViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var filterButton: UIButton!
     
-    private var gems = [GemModel]()
+    private var gemsArray = [GemModel]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,26 +35,46 @@ class GemsViewController: UIViewController {
     private func getData() {
         CurrencyExchangeProvider().getGems { [weak self] gemsData in
             guard let self else { return }
-            self.gems = gemsData
+            self.gemsArray = gemsData
+            self.sortedToHeighest()
             self.tableView.reloadData()
         } failure: {
             print("Error")
         }
     }
+    
+    private func sortedToHeighest() {
+        gemsArray.sort { $0.cost > $1.cost }
+        filterButton.setTitle("Sorted to heighest", for: .normal)
+    }
+    
+    private func sortedToLowest() {
+        gemsArray.sort { $0.cost < $1.cost }
+        filterButton.setTitle("Sorted to lowest", for: .selected)
+    }
+    
+    @IBAction func filterButtonDidTap(_ sender: UIButton) {
+        switch sender.isSelected {
+            case true:
+                sortedToHeighest()
+            case false:
+                sortedToLowest()
+        }
+        sender.isSelected.toggle()
+        tableView.reloadData()
+    }
 }
 
 extension GemsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return gems.count
+        return gemsArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: GemsTableViewCell.self), for: indexPath)
-        (cell as? GemsTableViewCell)?.set(model: gems[indexPath.row])
+        (cell as? GemsTableViewCell)?.set(model: gemsArray[indexPath.row])
         return cell
     }
-    
-    
 }
 
 extension GemsViewController: UITableViewDelegate {
