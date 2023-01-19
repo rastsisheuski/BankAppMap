@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="198" id="KGk-i7-Jjw" customClass="GemsTableViewCell" customModule="BankMapApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="399" height="198"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="399" height="198"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6AL-yo-GlI">
+                        <rect key="frame" x="16" y="16" width="367" height="166"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="Zb7-AV-jr0">
+                                <rect key="frame" x="0.0" y="0.0" width="367" height="166"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="HQG-VK-V2Z">
+                                        <rect key="frame" x="0.0" y="0.0" width="367" height="166"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Номер аттестата:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PRg-Wd-Pi8">
+                                                <rect key="frame" x="0.0" y="0.0" width="367" height="20.666666666666668"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Форма огранки:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P8l-Ra-4gr">
+                                                <rect key="frame" x="0.0" y="20.666666666666664" width="367" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Количество граней:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ugm-pP-VKX">
+                                                <rect key="frame" x="0.0" y="41.666666666666664" width="367" height="20.666666666666664"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Вес:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ade-iP-NPH">
+                                                <rect key="frame" x="0.0" y="62.333333333333321" width="367" height="20.666666666666664"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Цвет:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cMW-9Y-9Ra">
+                                                <rect key="frame" x="0.0" y="83" width="367" height="20.666666666666671"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Город:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S75-4C-NSR">
+                                                <rect key="frame" x="0.0" y="103.66666666666667" width="367" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Номер отделения:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rzq-F6-8vz">
+                                                <rect key="frame" x="0.0" y="124.66666666666667" width="367" height="20.666666666666671"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Цена:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oHC-Bt-dLF">
+                                                <rect key="frame" x="0.0" y="145.33333333333334" width="367" height="20.666666666666657"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Zb7-AV-jr0" secondAttribute="trailing" id="MKO-aK-sZd"/>
+                            <constraint firstItem="Zb7-AV-jr0" firstAttribute="leading" secondItem="6AL-yo-GlI" secondAttribute="leading" id="fH2-zm-sqU"/>
+                            <constraint firstAttribute="bottom" secondItem="Zb7-AV-jr0" secondAttribute="bottom" id="nQx-4q-8gN"/>
+                            <constraint firstItem="Zb7-AV-jr0" firstAttribute="top" secondItem="6AL-yo-GlI" secondAttribute="top" id="uWF-6I-I1x"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="6AL-yo-GlI" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="2kg-V8-xVe"/>
+                    <constraint firstAttribute="bottom" secondItem="6AL-yo-GlI" secondAttribute="bottom" constant="16" id="6Uh-y5-UgT"/>
+                    <constraint firstItem="6AL-yo-GlI" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="Qha-F6-cc5"/>
+                    <constraint firstAttribute="trailing" secondItem="6AL-yo-GlI" secondAttribute="trailing" constant="16" id="fu9-yj-7lC"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="attestatNumber" destination="PRg-Wd-Pi8" id="Anz-so-DHi"/>
+                <outlet property="city" destination="S75-4C-NSR" id="hQu-yr-zyt"/>
+                <outlet property="color" destination="cMW-9Y-9Ra" id="vH1-Cf-Qa6"/>
+                <outlet property="cost" destination="oHC-Bt-dLF" id="o7X-27-q6l"/>
+                <outlet property="formOfGrani" destination="P8l-Ra-4gr" id="Z8j-eb-gW1"/>
+                <outlet property="numberOfFilials" destination="Rzq-F6-8vz" id="30x-ue-zls"/>
+                <outlet property="numberOfGrani" destination="Ugm-pP-VKX" id="QZI-Ej-HYR"/>
+                <outlet property="weight" destination="Ade-iP-NPH" id="nxU-fg-xEX"/>
+                <outletCollection property="GemLabels" destination="S75-4C-NSR" collectionClass="NSMutableArray" id="pFH-De-DaD"/>
+                <outletCollection property="GemLabels" destination="Ade-iP-NPH" collectionClass="NSMutableArray" id="BN9-Lf-Xuq"/>
+                <outletCollection property="GemLabels" destination="oHC-Bt-dLF" collectionClass="NSMutableArray" id="uTo-LX-FVe"/>
+                <outletCollection property="GemLabels" destination="Rzq-F6-8vz" collectionClass="NSMutableArray" id="d9A-W7-JAJ"/>
+                <outletCollection property="GemLabels" destination="Ugm-pP-VKX" collectionClass="NSMutableArray" id="V5c-Ar-5Sq"/>
+                <outletCollection property="GemLabels" destination="P8l-Ra-4gr" collectionClass="NSMutableArray" id="uSo-XW-2hL"/>
+                <outletCollection property="GemLabels" destination="PRg-Wd-Pi8" collectionClass="NSMutableArray" id="lEG-c6-sbQ"/>
+                <outletCollection property="GemLabels" destination="cMW-9Y-9Ra" collectionClass="NSMutableArray" id="VWd-JK-7rb"/>
+            </connections>
+            <point key="canvasLocation" x="-219.08396946564883" y="63.380281690140848"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

@@ -80,23 +80,38 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RY2-AZ-Wwz" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1113.7404580152672" y="-235.21126760563382"/>
+            <point key="canvasLocation" x="1056" y="-665"/>
         </scene>
-        <!--Profile-->
+        <!--Gems-->
         <scene sceneID="cis-SC-A9M">
             <objects>
-                <viewController id="KCd-Lp-0J6" customClass="ProfileViewController" customModule="BankMapApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="KCd-Lp-0J6" customClass="GemsViewController" customModule="BankMapApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Sl9-5R-eno">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="nCo-ZI-xPB">
+                                <rect key="frame" x="0.0" y="59" width="393" height="710"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="XjW-W2-MgK"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="nCo-ZI-xPB" firstAttribute="leading" secondItem="XjW-W2-MgK" secondAttribute="leading" id="NsD-RB-VqK"/>
+                            <constraint firstItem="XjW-W2-MgK" firstAttribute="trailing" secondItem="nCo-ZI-xPB" secondAttribute="trailing" id="bX0-hg-JaH"/>
+                            <constraint firstItem="XjW-W2-MgK" firstAttribute="bottom" secondItem="nCo-ZI-xPB" secondAttribute="bottom" id="hGW-Ua-pNA"/>
+                            <constraint firstItem="nCo-ZI-xPB" firstAttribute="top" secondItem="XjW-W2-MgK" secondAttribute="top" id="w2v-dE-nTy"/>
+                        </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Profile" image="person" catalog="system" id="MQX-P0-4cg"/>
+                    <tabBarItem key="tabBarItem" title="Gems" image="diamond.lefthalf.filled" catalog="system" id="MQX-P0-4cg"/>
+                    <connections>
+                        <outlet property="tableView" destination="nCo-ZI-xPB" id="Vt5-TO-2MV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Ay-Cb-LMk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1114" y="459"/>
+            <point key="canvasLocation" x="1056" y="6"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="z6r-jn-oyT">
@@ -117,10 +132,25 @@
             </objects>
             <point key="canvasLocation" x="209.92366412213741" y="5.6338028169014089"/>
         </scene>
+        <!--Ingots View Controller-->
+        <scene sceneID="qJQ-6a-NtS">
+            <objects>
+                <viewController id="px4-1s-w8D" customClass="IngotsViewController" customModule="BankMapApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="96J-UF-Hu9">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="iOU-go-x0x"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eva-ZQ-62h" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1056" y="649"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="diamond.lefthalf.filled" catalog="system" width="128" height="124"/>
         <image name="map" catalog="system" width="128" height="112"/>
-        <image name="person" catalog="system" width="128" height="121"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -15,8 +15,8 @@ final class CurrencyExchangeProvider {
     func getATMs(city: String? = nil, currencyBlock: @escaping ([ATMModel]) -> Void, failure: (() -> Void)? = nil) {
         provider.request(.getATMsDetails(city: city)) { result in
             switch result {
-                case .success(let responce):
-                    guard let currencyExchange = try? responce.mapArray(ATMModel.self) else {
+                case .success(let response):
+                    guard let currencyExchange = try? response.mapArray(ATMModel.self) else {
                         failure?()
                         return
                     }
@@ -31,12 +31,28 @@ final class CurrencyExchangeProvider {
     func getDepartments(city: String? = nil, currencyBlock: @escaping ([DepartmentModel]) -> Void, failure: (() -> Void)? = nil) {
         provider.request(.getDepartmentDetails(city: city)) { result in
             switch result {
-                case .success(let responce):
-                    guard let currencyExchange = try? responce.mapArray(DepartmentModel.self) else {
+                case .success(let response):
+                    guard let currencyExchange = try? response.mapArray(DepartmentModel.self) else {
                         failure?()
                         return
                     }
                     currencyBlock(currencyExchange)
+                case .failure(let error):
+                    print(error.localizedDescription)
+                    failure?()
+            }
+        }
+    }
+    
+    func getGems(currencyBlock: @escaping ([GemModel]) -> Void, failure: (() -> Void)? = nil) {
+        provider.request(.getGems) { result in
+            switch result {
+                case .success(let response):
+                    guard let gem = try? response.mapArray(GemModel.self) else {
+                        failure?()
+                        return
+                    }
+                    currencyBlock(gem)
                 case .failure(let error):
                     print(error.localizedDescription)
                     failure?()

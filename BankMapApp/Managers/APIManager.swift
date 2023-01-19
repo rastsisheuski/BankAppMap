@@ -9,29 +9,35 @@ import Foundation
 import Moya
 
 enum APIManager {
-    case getATMsCities
-    case getDepartmentCities
     case getATMsDetails(city: String?)
     case getDepartmentDetails(city: String?)
+    case getGems
 }
 
 extension APIManager: TargetType {
     var baseURL: URL {
-        return URL(string: "https://belarusbank.by/api/")!
+        switch self {
+            case .getATMsDetails, .getDepartmentDetails:
+                return URL(string: "https://belarusbank.by/api/")!
+            case .getGems:
+                return URL(string: "https://belarusbank.by/api/")!
+        }
     }
     
     var path: String {
         switch self {
-            case .getATMsCities, .getATMsDetails:
+            case .getATMsDetails:
                 return "atm"
-            case .getDepartmentCities, .getDepartmentDetails:
+            case .getDepartmentDetails:
                 return "filials_info"
+            case .getGems:
+                return "getgems"
         }
     }
     
     var method: Moya.Method {
         switch self {
-            case .getATMsCities, .getDepartmentCities, .getATMsDetails, .getDepartmentDetails:
+            case  .getATMsDetails, .getDepartmentDetails, .getGems:
                 return .get
         }
     }
@@ -56,7 +62,7 @@ extension APIManager: TargetType {
                 params["city"] = city
             case .getDepartmentDetails(let city):
                 params["city"] = city
-            case .getATMsCities, .getDepartmentCities:
+            case .getGems:
                 return nil
         } 
         return params
@@ -64,7 +70,7 @@ extension APIManager: TargetType {
     
     var encoding: ParameterEncoding {
         switch self {
-            case .getATMsCities, .getDepartmentCities, .getATMsDetails, .getDepartmentDetails:
+            case .getATMsDetails, .getDepartmentDetails, .getGems:
                 return URLEncoding.queryString
         }
     }

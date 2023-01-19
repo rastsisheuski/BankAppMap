@@ -20,8 +20,13 @@
 		9752859629770FF200FE84BA /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9752859429770FF200FE84BA /* CollectionViewCell.swift */; };
 		9752859729770FF200FE84BA /* CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9752859529770FF200FE84BA /* CollectionViewCell.xib */; };
 		9752859C297713AB00FE84BA /* DepartmentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9752859B297713AB00FE84BA /* DepartmentModel.swift */; };
-		9752859E29771EAF00FE84BA /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9752859D29771EAF00FE84BA /* ProfileViewController.swift */; };
 		97B6299F29797C6F000F6CA0 /* FilteredButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97B6299E29797C6F000F6CA0 /* FilteredButton.swift */; };
+		97B629A22979A363000F6CA0 /* GemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97B629A12979A363000F6CA0 /* GemsViewController.swift */; };
+		97B629A62979A3CC000F6CA0 /* IngotsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97B629A52979A3CC000F6CA0 /* IngotsViewController.swift */; };
+		97B629A82979A4BE000F6CA0 /* GemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97B629A72979A4BE000F6CA0 /* GemModel.swift */; };
+		97B629AD2979A9C4000F6CA0 /* GemsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97B629AB2979A9C4000F6CA0 /* GemsTableViewCell.swift */; };
+		97B629AE2979A9C4000F6CA0 /* GemsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 97B629AC2979A9C4000F6CA0 /* GemsTableViewCell.xib */; };
+		97B629B12979AFA2000F6CA0 /* GemsCellTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97B629B02979AFA2000F6CA0 /* GemsCellTitle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,8 +44,13 @@
 		9752859429770FF200FE84BA /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		9752859529770FF200FE84BA /* CollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionViewCell.xib; sourceTree = "<group>"; };
 		9752859B297713AB00FE84BA /* DepartmentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepartmentModel.swift; sourceTree = "<group>"; };
-		9752859D29771EAF00FE84BA /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		97B6299E29797C6F000F6CA0 /* FilteredButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteredButton.swift; sourceTree = "<group>"; };
+		97B629A12979A363000F6CA0 /* GemsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GemsViewController.swift; sourceTree = "<group>"; };
+		97B629A52979A3CC000F6CA0 /* IngotsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngotsViewController.swift; sourceTree = "<group>"; };
+		97B629A72979A4BE000F6CA0 /* GemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GemModel.swift; sourceTree = "<group>"; };
+		97B629AB2979A9C4000F6CA0 /* GemsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GemsTableViewCell.swift; sourceTree = "<group>"; };
+		97B629AC2979A9C4000F6CA0 /* GemsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GemsTableViewCell.xib; sourceTree = "<group>"; };
+		97B629B02979AFA2000F6CA0 /* GemsCellTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GemsCellTitle.swift; sourceTree = "<group>"; };
 		B4C11C942B5204CDFA87AFDA /* Pods-BankMapApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BankMapApp.debug.xcconfig"; path = "Target Support Files/Pods-BankMapApp/Pods-BankMapApp.debug.xcconfig"; sourceTree = "<group>"; };
 		CDF807D4667086720E7D7321 /* Pods_BankMapApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BankMapApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F23E76B773D6880E4ECB5D4A /* Pods-BankMapApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BankMapApp.release.xcconfig"; path = "Target Support Files/Pods-BankMapApp/Pods-BankMapApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -117,6 +127,7 @@
 			children = (
 				9752858E2977039E00FE84BA /* ATMModel.swift */,
 				9752859B297713AB00FE84BA /* DepartmentModel.swift */,
+				97B629A72979A4BE000F6CA0 /* GemModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -132,8 +143,8 @@
 		9752859329770FBD00FE84BA /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				9752859429770FF200FE84BA /* CollectionViewCell.swift */,
-				9752859529770FF200FE84BA /* CollectionViewCell.xib */,
+				97B629AA2979A98B000F6CA0 /* GemsTableViewCell */,
+				97B629A92979A977000F6CA0 /* CollectionViewCell */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -142,6 +153,7 @@
 			isa = PBXGroup;
 			children = (
 				97B6299E29797C6F000F6CA0 /* FilteredButton.swift */,
+				97B629B02979AFA2000F6CA0 /* GemsCellTitle.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -149,10 +161,29 @@
 		97B629A02979A1A0000F6CA0 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				9752859D29771EAF00FE84BA /* ProfileViewController.swift */,
 				9752857A297700F100FE84BA /* MapViewController.swift */,
+				97B629A12979A363000F6CA0 /* GemsViewController.swift */,
+				97B629A52979A3CC000F6CA0 /* IngotsViewController.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		97B629A92979A977000F6CA0 /* CollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				9752859429770FF200FE84BA /* CollectionViewCell.swift */,
+				9752859529770FF200FE84BA /* CollectionViewCell.xib */,
+			);
+			path = CollectionViewCell;
+			sourceTree = "<group>";
+		};
+		97B629AA2979A98B000F6CA0 /* GemsTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				97B629AB2979A9C4000F6CA0 /* GemsTableViewCell.swift */,
+				97B629AC2979A9C4000F6CA0 /* GemsTableViewCell.xib */,
+			);
+			path = GemsTableViewCell;
 			sourceTree = "<group>";
 		};
 		F8B760FBC2217F9D8FF14EF5 /* Frameworks */ = {
@@ -224,6 +255,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				97B629AE2979A9C4000F6CA0 /* GemsTableViewCell.xib in Resources */,
 				97528583297700F300FE84BA /* LaunchScreen.storyboard in Resources */,
 				97528580297700F300FE84BA /* Assets.xcassets in Resources */,
 				9752859729770FF200FE84BA /* CollectionViewCell.xib in Resources */,
@@ -297,15 +329,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				97B629A62979A3CC000F6CA0 /* IngotsViewController.swift in Sources */,
 				97528592297703B400FE84BA /* APIManager.swift in Sources */,
 				9752857B297700F100FE84BA /* MapViewController.swift in Sources */,
 				97528577297700F100FE84BA /* AppDelegate.swift in Sources */,
 				9752859629770FF200FE84BA /* CollectionViewCell.swift in Sources */,
 				97B6299F29797C6F000F6CA0 /* FilteredButton.swift in Sources */,
+				97B629B12979AFA2000F6CA0 /* GemsCellTitle.swift in Sources */,
+				97B629A22979A363000F6CA0 /* GemsViewController.swift in Sources */,
+				97B629A82979A4BE000F6CA0 /* GemModel.swift in Sources */,
 				9752858C2977037800FE84BA /* CurrencyExchangeProvider.swift in Sources */,
 				9752859C297713AB00FE84BA /* DepartmentModel.swift in Sources */,
-				9752859E29771EAF00FE84BA /* ProfileViewController.swift in Sources */,
 				9752858F2977039E00FE84BA /* ATMModel.swift in Sources */,
+				97B629AD2979A9C4000F6CA0 /* GemsTableViewCell.swift in Sources */,
 				97528579297700F100FE84BA /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
