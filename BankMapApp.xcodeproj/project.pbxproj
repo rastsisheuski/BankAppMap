@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		47CB5D00BCDCBB0475C5E058 /* Pods_BankMapApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDF807D4667086720E7D7321 /* Pods_BankMapApp.framework */; };
+		973348EA297D343B006C37A2 /* IgotsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973348E8297D343B006C37A2 /* IgotsTableViewCell.swift */; };
+		973348EB297D343B006C37A2 /* IgotsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 973348E9297D343B006C37A2 /* IgotsTableViewCell.xib */; };
+		973348ED297D36A1006C37A2 /* IgotsType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973348EC297D36A1006C37A2 /* IgotsType.swift */; };
 		97528577297700F100FE84BA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97528576297700F100FE84BA /* AppDelegate.swift */; };
 		97528579297700F100FE84BA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97528578297700F100FE84BA /* SceneDelegate.swift */; };
 		9752857B297700F100FE84BA /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9752857A297700F100FE84BA /* MapViewController.swift */; };
@@ -31,6 +34,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		973348E8297D343B006C37A2 /* IgotsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IgotsTableViewCell.swift; sourceTree = "<group>"; };
+		973348E9297D343B006C37A2 /* IgotsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IgotsTableViewCell.xib; sourceTree = "<group>"; };
+		973348EC297D36A1006C37A2 /* IgotsType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IgotsType.swift; sourceTree = "<group>"; };
 		97528573297700F100FE84BA /* BankMapApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BankMapApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		97528576297700F100FE84BA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		97528578297700F100FE84BA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -77,6 +83,15 @@
 				F23E76B773D6880E4ECB5D4A /* Pods-BankMapApp.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		973348E7297D341F006C37A2 /* IgotsTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				973348E8297D343B006C37A2 /* IgotsTableViewCell.swift */,
+				973348E9297D343B006C37A2 /* IgotsTableViewCell.xib */,
+			);
+			path = IgotsTableViewCell;
 			sourceTree = "<group>";
 		};
 		9752856A297700F100FE84BA = {
@@ -146,6 +161,7 @@
 		9752859329770FBD00FE84BA /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				973348E7297D341F006C37A2 /* IgotsTableViewCell */,
 				97B629AA2979A98B000F6CA0 /* GemsTableViewCell */,
 				97B629A92979A977000F6CA0 /* CollectionViewCell */,
 			);
@@ -157,6 +173,7 @@
 			children = (
 				97B6299E29797C6F000F6CA0 /* FilteredButton.swift */,
 				97B629B02979AFA2000F6CA0 /* GemsCellTitle.swift */,
+				973348EC297D36A1006C37A2 /* IgotsType.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -258,6 +275,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				973348EB297D343B006C37A2 /* IgotsTableViewCell.xib in Resources */,
 				97B629AE2979A9C4000F6CA0 /* GemsTableViewCell.xib in Resources */,
 				97528583297700F300FE84BA /* LaunchScreen.storyboard in Resources */,
 				97528580297700F300FE84BA /* Assets.xcassets in Resources */,
@@ -340,10 +358,12 @@
 				9752859629770FF200FE84BA /* CollectionViewCell.swift in Sources */,
 				97B6299F29797C6F000F6CA0 /* FilteredButton.swift in Sources */,
 				97B629B12979AFA2000F6CA0 /* GemsCellTitle.swift in Sources */,
+				973348ED297D36A1006C37A2 /* IgotsType.swift in Sources */,
 				97B629A22979A363000F6CA0 /* GemsViewController.swift in Sources */,
 				97B629A82979A4BE000F6CA0 /* GemModel.swift in Sources */,
 				9752858C2977037800FE84BA /* CurrencyExchangeProvider.swift in Sources */,
 				9752859C297713AB00FE84BA /* DepartmentModel.swift in Sources */,
+				973348EA297D343B006C37A2 /* IgotsTableViewCell.swift in Sources */,
 				9752858F2977039E00FE84BA /* ATMModel.swift in Sources */,
 				97B629AD2979A9C4000F6CA0 /* GemsTableViewCell.swift in Sources */,
 				97528579297700F100FE84BA /* SceneDelegate.swift in Sources */,

@@ -7,6 +7,7 @@
 
 protocol Cityable {
     var cityName: String? { get }
+    var cityType: String? { get }
 }
 
 
@@ -15,15 +16,17 @@ import ObjectMapper
 
 final class ATMModel: Mappable, Cityable {
     var cityName: String?
+    var cityType: String?
     var gpsX: String = ""
     var gpsY: String = ""
     var city: String = ""
-    var cityType: String = ""
+    var typeOfCity: String = ""
     var adressType: String = ""
     var adress : String = ""
     var house: String = ""
     var cashIn: String = ""
     var id: String = ""
+    var atmError: String = ""
     
     
     init?(map: ObjectMapper.Map) {
@@ -34,12 +37,14 @@ final class ATMModel: Mappable, Cityable {
         gpsX            <- map["gps_x"]
         gpsY            <- map["gps_y"]
         city            <- map["city"]
-        cityType        <- map["city_type"]
+        typeOfCity      <- map["city_type"]
         adressType      <- map["address_type"]
         adress          <- map["address"]
         house           <- map["house"]
         cashIn          <- map["cash_in"]
         id              <- map["id"]
         cityName        <- map["city"]
+        cityType        <- map["city_type"]
+        atmError        <- map["ATM_error"]
     }
 }

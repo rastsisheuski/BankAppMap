@@ -137,22 +137,61 @@
                     <connections>
                         <segue destination="AwP-NQ-WEL" kind="relationship" relationship="viewControllers" id="hd4-4R-NS2"/>
                         <segue destination="KCd-Lp-0J6" kind="relationship" relationship="viewControllers" id="BEm-ZC-jgs"/>
+                        <segue destination="px4-1s-w8D" kind="relationship" relationship="viewControllers" id="lQT-Xg-742"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1HC-Rd-A8e" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="209.92366412213741" y="5.6338028169014089"/>
         </scene>
-        <!--Ingots View Controller-->
+        <!--Ingots-->
         <scene sceneID="qJQ-6a-NtS">
             <objects>
                 <viewController id="px4-1s-w8D" customClass="IngotsViewController" customModule="BankMapApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="96J-UF-Hu9">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="uXZ-Or-K0e">
+                                <rect key="frame" x="0.0" y="59" width="393" height="32"/>
+                                <segments>
+                                    <segment title="Gold"/>
+                                    <segment title="Silver"/>
+                                    <segment title="Platinum"/>
+                                </segments>
+                                <connections>
+                                    <action selector="segmentControlDidChange:" destination="px4-1s-w8D" eventType="valueChanged" id="RTg-gq-xMk"/>
+                                </connections>
+                            </segmentedControl>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="VzA-Ru-duq">
+                                <rect key="frame" x="0.0" y="90" width="393" height="679"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="Q9u-Yj-Xwx">
+                                <rect key="frame" x="178" y="411" width="37" height="37"/>
+                                <color key="color" systemColor="systemRedColor"/>
+                            </activityIndicatorView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="iOU-go-x0x"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Q9u-Yj-Xwx" firstAttribute="centerY" secondItem="VzA-Ru-duq" secondAttribute="centerY" id="0CV-bm-8BH"/>
+                            <constraint firstItem="uXZ-Or-K0e" firstAttribute="leading" secondItem="iOU-go-x0x" secondAttribute="leading" id="1ir-9K-x8I"/>
+                            <constraint firstItem="iOU-go-x0x" firstAttribute="trailing" secondItem="uXZ-Or-K0e" secondAttribute="trailing" id="3xb-H6-8O8"/>
+                            <constraint firstItem="iOU-go-x0x" firstAttribute="bottom" secondItem="VzA-Ru-duq" secondAttribute="bottom" id="bF9-ie-lPr"/>
+                            <constraint firstItem="VzA-Ru-duq" firstAttribute="top" secondItem="uXZ-Or-K0e" secondAttribute="bottom" id="gwn-B5-Uvl"/>
+                            <constraint firstItem="Q9u-Yj-Xwx" firstAttribute="centerX" secondItem="VzA-Ru-duq" secondAttribute="centerX" id="jJb-Zz-Q8i"/>
+                            <constraint firstItem="VzA-Ru-duq" firstAttribute="leading" secondItem="iOU-go-x0x" secondAttribute="leading" id="luq-Xf-fmZ"/>
+                            <constraint firstItem="uXZ-Or-K0e" firstAttribute="top" secondItem="iOU-go-x0x" secondAttribute="top" id="mRI-0B-T2a"/>
+                            <constraint firstItem="iOU-go-x0x" firstAttribute="trailing" secondItem="VzA-Ru-duq" secondAttribute="trailing" id="z19-Y8-UiA"/>
+                        </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Ingots" image="rectangle.portrait.on.rectangle.portrait.fill" catalog="system" id="ScP-IT-0ML"/>
+                    <connections>
+                        <outlet property="segmentControl" destination="uXZ-Or-K0e" id="7EG-vA-AmS"/>
+                        <outlet property="spinnerView" destination="Q9u-Yj-Xwx" id="7ta-TG-pVy"/>
+                        <outlet property="tableView" destination="VzA-Ru-duq" id="wBb-LE-lyA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eva-ZQ-62h" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -163,6 +202,7 @@
         <image name="arrow.up.arrow.down" catalog="system" width="128" height="97"/>
         <image name="diamond.lefthalf.filled" catalog="system" width="128" height="124"/>
         <image name="map" catalog="system" width="128" height="112"/>
+        <image name="rectangle.portrait.on.rectangle.portrait.fill" catalog="system" width="118" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

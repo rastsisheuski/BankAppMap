@@ -8,13 +8,13 @@
 import Foundation
 
 enum FilteredButton: CaseIterable {
-    case all
+    case selectAll
     case atm
     case department
     
     var description: String {
         switch self {
-            case .all:
+            case .selectAll:
                 return "Все"
             case .atm:
                 return "Банкоматы"

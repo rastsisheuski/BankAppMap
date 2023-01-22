@@ -9,6 +9,7 @@ import ObjectMapper
 
 final class DepartmentModel: Mappable, Cityable {
     var cityName: String?
+    var cityType: String?
     var gpsX: String = ""
     var gpsY: String = ""
     var filialName: String = ""
@@ -27,6 +28,7 @@ final class DepartmentModel: Mappable, Cityable {
         filialName      <- map["filial_name"]
         city            <- map["name"]
         cityName        <- map["name"]
+        cityType        <- map["name_type"]
     }
 }
 

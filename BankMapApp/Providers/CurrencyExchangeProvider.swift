@@ -59,5 +59,20 @@ final class CurrencyExchangeProvider {
             }
         }
     }
+    
+    func getIngots(succes: @escaping ([IngotModel]) -> Void, failure: (() -> Void)? = nil) {
+        provider.request(.getIgots) { result in
+            switch result {
+                case .success(let response):
+                    guard let ingots = try? response.mapArray(IngotModel.self) else {
+                        failure?()
+                        return
+                    }
+                    succes(ingots)
+                case .failure(let error):
+                    print(error.localizedDescription)
+            }
+        }
+    }
 }
 

@@ -12,34 +12,30 @@ enum APIManager {
     case getATMsDetails(city: String?)
     case getDepartmentDetails(city: String?)
     case getGems
+    case getIgots
+    
 }
 
 extension APIManager: TargetType {
     var baseURL: URL {
-        switch self {
-            case .getATMsDetails, .getDepartmentDetails:
-                return URL(string: "https://belarusbank.by/api/")!
-            case .getGems:
-                return URL(string: "https://belarusbank.by/api/")!
-        }
+        return URL(string: "https://belarusbank.by/api")!
     }
     
     var path: String {
         switch self {
             case .getATMsDetails:
-                return "atm"
+                return "/atm"
             case .getDepartmentDetails:
-                return "filials_info"
+                return "/filials_info"
             case .getGems:
-                return "getgems"
+                return "/getgems"
+            case .getIgots:
+                return "/getinfodrall"
         }
     }
     
     var method: Moya.Method {
-        switch self {
-            case  .getATMsDetails, .getDepartmentDetails, .getGems:
-                return .get
-        }
+        return .get
     }
     
     var sampleData: Data {
@@ -62,17 +58,14 @@ extension APIManager: TargetType {
                 params["city"] = city
             case .getDepartmentDetails(let city):
                 params["city"] = city
-            case .getGems:
+            case .getGems, .getIgots:
                 return nil
         } 
         return params
     }
     
     var encoding: ParameterEncoding {
-        switch self {
-            case .getATMsDetails, .getDepartmentDetails, .getGems:
-                return URLEncoding.queryString
-        }
+        return URLEncoding.queryString
     }
 }
 

@@ -12,20 +12,28 @@ import ObjectMapper
 
 final class MapViewController: UIViewController {
     
+    // MARK: -
+    // MARK: - IBOutlets
+    
     @IBOutlet weak var mapView: GMSMapView!
     @IBOutlet weak var spinnerView: UIActivityIndicatorView!
     @IBOutlet weak var citiesCollection: UICollectionView!
     @IBOutlet weak var filterCollection: UICollectionView!
     
+    // MARK: -
+    // MARK: - Private Properties
+    
     private let dispatchGroup = DispatchGroup()
     private var locationManager = CLLocationManager()
     private var filteredButtons = FilteredButton.allCases
     private var selectedCityIndex = IndexPath(row: 0, section: 0)
-    private var selectedFilter = FilteredButton.all
+    private var selectedFilter = FilteredButton.selectAll
     private var atmsArray = [ATMModel]()
     private var departmentsArray = [DepartmentModel]()
     private var cities = [String]()
     
+    // MARK: -
+    // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +42,9 @@ final class MapViewController: UIViewController {
         setupCollectionViews()
         getData()
     }
+    
+    // MARK: -
+    // MARK: - Private Methods
     
     private func setupMapView() {
         mapView.delegate = self
@@ -68,19 +79,94 @@ final class MapViewController: UIViewController {
         mapView.animate(to: camera)
     }
     
-    private func getATMs() {
-        CurrencyExchangeProvider().getATMs(city: nil) { [weak self] data in
+    private func getCities(_ array: [Cityable]) {
+        array.forEach { [weak self] model in
+            guard let self,
+                  let cityName = model.cityName
+            else { return }
+            if !self.cities.contains(cityName), model.cityType == "г." {
+                cities.append(cityName)
+            }
+        }
+        self.citiesCollection.reloadData()
+    }
+    
+    private func drawATMsMarkers(from array: [ATMModel]) {
+        array.forEach { atm in
+            guard let lat = Double(atm.gpsX),
+                  let long = Double(atm.gpsY)
+            else { return }
+            let marker = GMSMarker(position: CLLocationCoordinate2D(latitude: lat, longitude: long))
+            
+            if atm.atmError == "да" {
+                marker.icon = GMSMarker.markerImage(with: .green)
+            } else {
+                marker.icon = GMSMarker.markerImage(with: .red)
+            }
+            marker.map = mapView
+        }
+    }
+    private func drawDepartmentsMarkers(from array: [DepartmentModel]) {
+        array.forEach { atm in
+            guard let lat = Double(atm.gpsX),
+                  let long = Double(atm.gpsY)
+            else { return }
+            let marker = GMSMarker(position: CLLocationCoordinate2D(latitude: lat, longitude: long))
+            marker.icon = GMSMarker.markerImage(with: .purple)
+            marker.map = mapView
+        }
+    }
+    
+    private func drawMarkersFor(selectedCity: String) {
+        mapView.clear()
+        spinnerView.startAnimating()
+        switch selectedFilter {
+            case .atm:
+                getATMs(city: selectedCity) { [weak self] data in
+                    guard let self else { return }
+                    self.drawATMsMarkers(from: data)
+                }
+                
+            case .department:
+                getDepartments(city: selectedCity) { [weak self] data in
+                    guard let self else { return }
+                    self.drawDepartmentsMarkers(from: data)
+                }
+               
+            case .selectAll:
+                getATMs(city: selectedCity) { [weak self] data in
+                    guard let self else { return }
+                    self.drawATMsMarkers(from: data)
+                    self.getDepartments(city: self.cities[self.selectedCityIndex.row]) { [weak self] data in
+                        guard let self else { return }
+                        self.drawDepartmentsMarkers(from: data)
+                    }
+                }
+        }
+        spinnerView.stopAnimating()
+    }
+}
+
+// MARK: -
+// MARK: - Extension MapViewcontroller + DataRequests
+
+extension MapViewController {
+    
+    private func getATMs(city: String?, completion: @escaping ([ATMModel]) -> Void ) {
+        CurrencyExchangeProvider().getATMs(city: city) { [weak self] data in
             guard let self else { return }
             self.atmsArray = data
+            completion(data)
         } failure: {
             print("Error")
         }
     }
-
-    private func getDepartments() {
-        CurrencyExchangeProvider().getDepartments(city: nil) { [weak self] data in
+    
+    private func getDepartments(city: String?, completion: @escaping ([DepartmentModel]) -> Void) {
+        CurrencyExchangeProvider().getDepartments(city: city) { [weak self] data in
             guard let self else { return }
             self.departmentsArray = data
+            completion(data)
         } failure: {
             print("Error")
         }
@@ -112,51 +198,12 @@ final class MapViewController: UIViewController {
         }
         
         dispatchGroup.notify(queue: .main) {
-            self.drawATMsMarkers()
-            self.drawDepartmentsMarkers()
+            self.drawATMsMarkers(from: self.atmsArray)
+            self.drawDepartmentsMarkers(from: self.departmentsArray)
             self.getCities(self.departmentsArray)
             self.getCities(self.atmsArray)
             self.spinnerView.stopAnimating()
         }
-    }
-    
-    private func drawMarker(name: String, location: CLLocationCoordinate2D) {
-        let marker = GMSMarker(position: location)
-        marker.title = "Mark №\(name)"
-        marker.map = mapView
-    }
-    
-    private func drawATMsMarkers() {
-        atmsArray.forEach { atm in
-            guard let lat = Double(atm.gpsX),
-                  let long = Double(atm.gpsY)
-            else { return }
-            let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
-            let name = atm.id
-            drawMarker(name: name, location: coordinate)
-        }
-    }
-    private func drawDepartmentsMarkers() {
-        departmentsArray.forEach { department in
-            guard let lat = Double(department.gpsX),
-                  let long = Double(department.gpsY)
-            else { return }
-            let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
-            let name = department.filialName
-            drawMarker(name: name, location: coordinate)
-        }
-    }
-    
-    private func getCities(_ array: [Cityable]) {
-        array.forEach { [weak self] model in
-            guard let self,
-                  let cityName = model.cityName
-            else { return }
-            if !self.cities.contains(cityName) {
-                cities.append(cityName)
-            }
-        }
-        self.citiesCollection.reloadData()
     }
 }
 
@@ -188,6 +235,9 @@ extension MapViewController: CLLocationManagerDelegate {
     
 }
 
+// MARK: -
+// MARK: - Extension MapViewController + UICollectionViewDataSource
+
 extension MapViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == citiesCollection {
@@ -217,15 +267,19 @@ extension MapViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == citiesCollection {
             self.selectedCityIndex = indexPath
-            self.citiesCollection.reloadData()
+            self.drawMarkersFor(selectedCity: cities[selectedCityIndex.row])
+            citiesCollection.reloadData()
         } else {
             self.selectedFilter = filteredButtons[indexPath.row]
+            self.drawMarkersFor(selectedCity: cities[selectedCityIndex.row])
             self.filterCollection.reloadData()
         }
     }
 }
 
+// MARK: -
+// MARK: - Extension MapViewController + UICollectionViewDelegateFlowLayout
+
 extension MapViewController: UICollectionViewDelegateFlowLayout {
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//    }
+
 }
