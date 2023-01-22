@@ -15,6 +15,9 @@ final class DepartmentModel: Mappable, Cityable {
     var filialName: String = ""
     var nameType: String = ""
     var city: String = ""
+    var streetType: String = ""
+    var street: String = ""
+    var homeNumber: String = ""
     
     
     init?(map: ObjectMapper.Map) {
@@ -28,7 +31,9 @@ final class DepartmentModel: Mappable, Cityable {
         filialName      <- map["filial_name"]
         city            <- map["name"]
         cityName        <- map["name"]
-        cityType        <- map["name_type"]
+        streetType      <- map["street_type"]
+        street          <- map["street"]
+        homeNumber      <- map["home_number"]
     }
 }
 

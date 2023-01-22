@@ -26,7 +26,7 @@ final class MapViewController: UIViewController {
     private let dispatchGroup = DispatchGroup()
     private var locationManager = CLLocationManager()
     private var filteredButtons = FilteredButton.allCases
-    private var selectedCityIndex = IndexPath(row: 0, section: 0)
+    private var selectedCityIndex: IndexPath?
     private var selectedFilter = FilteredButton.selectAll
     private var atmsArray = [ATMModel]()
     private var departmentsArray = [DepartmentModel]()
@@ -97,23 +97,33 @@ final class MapViewController: UIViewController {
                   let long = Double(atm.gpsY)
             else { return }
             let marker = GMSMarker(position: CLLocationCoordinate2D(latitude: lat, longitude: long))
-            
             if atm.atmError == "да" {
                 marker.icon = GMSMarker.markerImage(with: .green)
             } else {
                 marker.icon = GMSMarker.markerImage(with: .red)
             }
             marker.map = mapView
+            marker.title = atm.adressType + atm.adress + atm.house
+            marker.snippet = "Время работы: \(atm.workTime)"
+            let camera = GMSCameraPosition(latitude: lat, longitude: long, zoom: 8)
+            mapView.animate(to: camera)
+            mapView.selectedMarker = marker
+            mapView.selectedMarker = nil
         }
     }
     private func drawDepartmentsMarkers(from array: [DepartmentModel]) {
-        array.forEach { atm in
-            guard let lat = Double(atm.gpsX),
-                  let long = Double(atm.gpsY)
+        array.forEach { dep in
+            guard let lat = Double(dep.gpsX),
+                  let long = Double(dep.gpsY)
             else { return }
             let marker = GMSMarker(position: CLLocationCoordinate2D(latitude: lat, longitude: long))
-            marker.icon = GMSMarker.markerImage(with: .purple)
             marker.map = mapView
+            marker.title = dep.filialName + dep.nameType + dep.city + dep.streetType + dep.street + dep.homeNumber
+            marker.icon = GMSMarker.markerImage(with: .purple)
+            let camera = GMSCameraPosition(latitude: lat, longitude: long, zoom: 8)
+            mapView.animate(to: camera)
+            mapView.selectedMarker = marker
+            mapView.selectedMarker = nil
         }
     }
     
@@ -125,25 +135,37 @@ final class MapViewController: UIViewController {
                 getATMs(city: selectedCity) { [weak self] data in
                     guard let self else { return }
                     self.drawATMsMarkers(from: data)
+                    self.spinnerView.stopAnimating()
                 }
                 
             case .department:
                 getDepartments(city: selectedCity) { [weak self] data in
                     guard let self else { return }
                     self.drawDepartmentsMarkers(from: data)
+                    self.spinnerView.stopAnimating()
                 }
                
             case .selectAll:
-                getATMs(city: selectedCity) { [weak self] data in
+                getATMs(city: selectedCity) { [weak self] atmsData in
                     guard let self else { return }
-                    self.drawATMsMarkers(from: data)
-                    self.getDepartments(city: self.cities[self.selectedCityIndex.row]) { [weak self] data in
+                    guard let selectedIndex = self.selectedCityIndex else { return }
+                    self.getDepartments(city: self.cities[selectedIndex.row]) { [weak self] departmentData in
                         guard let self else { return }
-                        self.drawDepartmentsMarkers(from: data)
+                        self.drawATMsMarkers(from: atmsData)
+                        self.drawDepartmentsMarkers(from: departmentData)
+                        self.spinnerView.stopAnimating()
                     }
                 }
         }
-        spinnerView.stopAnimating()
+    }
+    
+    private func findUsserCityIndexPathFromArray(userCity: String) -> IndexPath {
+        for (index, cityName) in cities.enumerated() {
+            if userCity == cityName {
+                return IndexPath(row: index, section: 0)
+            }
+        }
+        return IndexPath(row: 0, section: 0)
     }
 }
 
@@ -198,8 +220,6 @@ extension MapViewController {
         }
         
         dispatchGroup.notify(queue: .main) {
-            self.drawATMsMarkers(from: self.atmsArray)
-            self.drawDepartmentsMarkers(from: self.departmentsArray)
             self.getCities(self.departmentsArray)
             self.getCities(self.atmsArray)
             self.spinnerView.stopAnimating()
@@ -226,7 +246,23 @@ extension MapViewController: CLLocationManagerDelegate {
             return
         }
         cameraMove(to: location)
-        locationManager.stopUpdatingLocation()
+        
+        let geocoder = CLGeocoder()
+        
+        guard let location = locationManager.location else { return }
+        geocoder.reverseGeocodeLocation(location) { [weak self] placemarks, error in
+            if let firstLocation = placemarks?[0],
+               let cityName = firstLocation.locality {
+                guard let self else { return }
+                let empty = self.cities.isEmpty
+                guard !empty else { return }
+                let cityIndexPath = self.findUsserCityIndexPathFromArray(userCity: cityName)
+                self.selectedCityIndex = cityIndexPath
+                self.drawMarkersFor(selectedCity: self.cities[cityIndexPath.row])
+                self.citiesCollection.reloadData()
+                self.locationManager.stopUpdatingLocation()
+            }
+        }
     }
     
     func cameraMove(to location: CLLocationCoordinate2D) {
@@ -265,13 +301,15 @@ extension MapViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let cityIndex = selectedCityIndex else { return }
+        
         if collectionView == citiesCollection {
             self.selectedCityIndex = indexPath
-            self.drawMarkersFor(selectedCity: cities[selectedCityIndex.row])
+            self.drawMarkersFor(selectedCity: cities[indexPath.row])
             citiesCollection.reloadData()
         } else {
             self.selectedFilter = filteredButtons[indexPath.row]
-            self.drawMarkersFor(selectedCity: cities[selectedCityIndex.row])
+            self.drawMarkersFor(selectedCity: cities[cityIndex.row])
             self.filterCollection.reloadData()
         }
     }

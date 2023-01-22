@@ -28,8 +28,8 @@ class IngotsViewController: UIViewController {
     }
     
     private func setupTableView() {
-            tableView.delegate = self
-            tableView.dataSource = self
+        tableView.delegate = self
+        tableView.dataSource = self
         registerCell()
     }
     
@@ -42,9 +42,7 @@ class IngotsViewController: UIViewController {
         spinnerView.startAnimating()
         CurrencyExchangeProvider().getIngots { result in
             result.forEach { model in
-                if model.goldTen != "0.00" || model.silverTen != "0.00" || model.platinumTen != "0.00" {
-                    self.ingotArray.append(model)
-                }
+                self.ingotArray.append(model)
                 self.tableView.reloadData()
             }
             self.spinnerView.stopAnimating()

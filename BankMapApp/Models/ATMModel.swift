@@ -23,6 +23,7 @@ final class ATMModel: Mappable, Cityable {
     var typeOfCity: String = ""
     var adressType: String = ""
     var adress : String = ""
+    var workTime: String = ""
     var house: String = ""
     var cashIn: String = ""
     var id: String = ""
@@ -46,5 +47,6 @@ final class ATMModel: Mappable, Cityable {
         cityName        <- map["city"]
         cityType        <- map["city_type"]
         atmError        <- map["ATM_error"]
+        workTime        <- map["work_time"]
     }
 }

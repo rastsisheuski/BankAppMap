@@ -28,23 +28,45 @@ class IgotsTableViewCell: UITableViewCell {
         
         switch type {
             case .gold:
-                tenPrice = model.goldTen
-                twentyPrice = model.goldTwenty
-                fiftyPrice = model.goldFifty
+                let (tenValid, twentyValid, fiftyValid) = validatePrices(ten: model.goldTen, twenty: model.goldTwenty, fifty: model.goldFifty)
+                tenPrice = tenValid
+                twentyPrice = twentyValid
+                fiftyPrice = fiftyValid
             case .silver:
-                tenPrice = model.silverTen
-                twentyPrice = model.silverTwenty
-                fiftyPrice = model.silverFifty
+                let (tenValid, twentyValid, fiftyValid) = validatePrices(ten: model.silverTen, twenty: model.silverTwenty, fifty: model.silverFifty)
+                tenPrice = tenValid
+                twentyPrice = twentyValid
+                fiftyPrice = fiftyValid
             case .platinum:
-                tenPrice = model.platinumTen
-                twentyPrice = model.platinumTwenty
-                fiftyPrice = model.platinumFifty
+                let (tenValid, twentyValid, fiftyValid) = validatePrices(ten: model.platinumTen, twenty: model.platinumTwenty, fifty: model.platinumFifty)
+                tenPrice = tenValid
+                twentyPrice = twentyValid
+                fiftyPrice = fiftyValid
         }
         typeOfMetalLabel.text = type.rawValue
+        
         tenLabel.text = "Price for 10g ingot: \(tenPrice)"
         twentyLabel.text = "Price for 20g ingot: \(twentyPrice)"
         fiftyLabel.text = "Price for 50g ingot: \(fiftyPrice)"
     }
-
     
+    private func validatePrices(ten: String, twenty: String, fifty: String) -> (String, String, String) {
+        var tenReturn = ten
+        var twentyReturn = twenty
+        var fiftyReturn = fifty
+        
+        if ten.isEmpty || ten == "0.00" {
+            tenReturn = "Нет в наличии"
+        }
+        
+        if twenty.isEmpty || twenty == "0.00" {
+            twentyReturn = "Нет в наличии"
+        }
+        
+        if fifty.isEmpty || fifty == "0.00" {
+            fiftyReturn = "Нет в наличии"
+        }
+        
+        return (tenReturn, twentyReturn, fiftyReturn)
+    }
 }
