@@ -28,16 +28,19 @@ class IgotsTableViewCell: UITableViewCell {
         
         switch type {
             case .gold:
+                typeOfMetalLabel.textColor = .yellow
                 let (tenValid, twentyValid, fiftyValid) = validatePrices(ten: model.goldTen, twenty: model.goldTwenty, fifty: model.goldFifty)
                 tenPrice = tenValid
                 twentyPrice = twentyValid
                 fiftyPrice = fiftyValid
             case .silver:
+                typeOfMetalLabel.textColor = .lightGray
                 let (tenValid, twentyValid, fiftyValid) = validatePrices(ten: model.silverTen, twenty: model.silverTwenty, fifty: model.silverFifty)
                 tenPrice = tenValid
                 twentyPrice = twentyValid
                 fiftyPrice = fiftyValid
             case .platinum:
+                typeOfMetalLabel.textColor = .darkGray
                 let (tenValid, twentyValid, fiftyValid) = validatePrices(ten: model.platinumTen, twenty: model.platinumTwenty, fifty: model.platinumFifty)
                 tenPrice = tenValid
                 twentyPrice = twentyValid

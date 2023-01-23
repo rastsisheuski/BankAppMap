@@ -20,21 +20,20 @@ class CollectionViewCell: UICollectionViewCell {
     
     func set(title: String) {
         self.cellLabel.text = title
-        if isSelected {
-            backgroundColor = .white
-            cellLabel.textColor = .red
+        if self.isSelected {
+            backgroundColor = .systemYellow
+            cellLabel.textColor = .systemGray
+            layer.borderWidth = 2
         }
     }
     
     private func setupUI() {
-        setupLabels()
-    }
-    
-    private func setupLabels() {
-        cellLabel.font = .systemFont(ofSize: 18, weight: .bold)
-        cellLabel.textColor = .white
-        cellLabel.textAlignment = .center
-        cellLabel.adjustsFontSizeToFitWidth = true
+        backgroundColor = .systemGray
+        layer.borderWidth = 0
+        layer.borderColor = UIColor.systemYellow.cgColor
+        layer.cornerRadius = 10
+        cellLabel.textColor = .systemYellow
+        self.clipsToBounds = true
     }
     
     override func prepareForReuse() {

@@ -35,7 +35,7 @@ class GemsTableViewCell: UITableViewCell {
         self.color.text = "\(GemsCellTitle.color.title) \(model.color)"
         self.city.text = "\(GemsCellTitle.city.title) \(model.city)"
         self.numberOfFilials.text = "\(GemsCellTitle.filialId.title) \(model.filialId)"
-        self.color.text = "\(GemsCellTitle.cost.title) \(model.cost)"
+        self.cost.text = "\(GemsCellTitle.cost.title) \(model.cost)"
     }
     
     private func setupUI() {
@@ -44,8 +44,8 @@ class GemsTableViewCell: UITableViewCell {
     
     private func setupLabels() {
         GemLabels.forEach { label in
-            label.textColor = .white
-            label.font = UIFont.systemFont(ofSize: 10)
+            label.textColor = .systemGray
+            label.font = UIFont.systemFont(ofSize: 13)
             label.adjustsFontSizeToFitWidth = true
         }
     }

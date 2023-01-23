@@ -7,7 +7,7 @@ target 'BankMapApp' do
 
   # Pods for BankMapApp
   pod 'GoogleMaps'
-  pod 'RealmSwift'
+  pod 'Google-Maps-iOS-Utils'
   pod 'Moya'
   pod 'Moya-ObjectMapper', '2.9'
 end

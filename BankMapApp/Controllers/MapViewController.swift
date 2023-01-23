@@ -7,8 +7,7 @@
 
 import UIKit
 import GoogleMaps
-import CoreLocation
-import ObjectMapper
+import GoogleMapsUtils
 
 final class MapViewController: UIViewController {
     
@@ -20,10 +19,12 @@ final class MapViewController: UIViewController {
     @IBOutlet weak var citiesCollection: UICollectionView!
     @IBOutlet weak var filterCollection: UICollectionView!
     
+    @IBOutlet weak var nearestATMsButtom: UIButton!
     // MARK: -
     // MARK: - Private Properties
     
     private let dispatchGroup = DispatchGroup()
+    private var clusterManager: GMUClusterManager?
     private var locationManager = CLLocationManager()
     private var filteredButtons = FilteredButton.allCases
     private var selectedCityIndex: IndexPath?
@@ -38,7 +39,9 @@ final class MapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupNearestATMsButton()
         setupMapView()
+        setupClusterManager()
         setupCollectionViews()
         getData()
     }
@@ -46,6 +49,12 @@ final class MapViewController: UIViewController {
     // MARK: -
     // MARK: - Private Methods
     
+    private func setupNearestATMsButton() {
+        nearestATMsButtom.layer.cornerRadius = 12
+        nearestATMsButtom.clipsToBounds = true
+        nearestATMsButtom.addTarget(self, action: #selector(nearestATMsButtonDidTap(sender:)), for: .touchUpInside)
+    }
+
     private func setupMapView() {
         mapView.delegate = self
         mapView.isMyLocationEnabled = true
@@ -69,6 +78,13 @@ final class MapViewController: UIViewController {
         
         citiesCollection.contentInset = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
         filterCollection.contentInset = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
+        
+        citiesCollection.backgroundColor = .gray.withAlphaComponent(0.5)
+        filterCollection.backgroundColor = .gray.withAlphaComponent(0.5)
+        
+        citiesCollection.showsHorizontalScrollIndicator = false
+        filterCollection.showsHorizontalScrollIndicator = false
+        filterCollection.isScrollEnabled = false
     }
     
     private func setupMyLocation() {
@@ -77,6 +93,15 @@ final class MapViewController: UIViewController {
         let camera = GMSCameraPosition(latitude: myPosition.latitude, longitude: myPosition.longitude, zoom: 10)
         
         mapView.animate(to: camera)
+    }
+    
+    private func setupClusterManager() {
+        let iconGenerator = GMUDefaultClusterIconGenerator()
+        let algorithm = GMUNonHierarchicalDistanceBasedAlgorithm()
+        let renderer = GMUDefaultClusterRenderer(mapView: mapView, clusterIconGenerator: iconGenerator)
+        
+        clusterManager = GMUClusterManager(map: mapView, algorithm: algorithm, renderer: renderer)
+        clusterManager?.setMapDelegate(self)
     }
     
     private func getCities(_ array: [Cityable]) {
@@ -92,44 +117,54 @@ final class MapViewController: UIViewController {
     }
     
     private func drawATMsMarkers(from array: [ATMModel]) {
-        array.forEach { atm in
-            guard let lat = Double(atm.gpsX),
-                  let long = Double(atm.gpsY)
+        array.forEach { atmArray in
+            guard let lat = Double(atmArray.gpsX),
+                  let long = Double(atmArray.gpsY)
             else { return }
             let marker = GMSMarker(position: CLLocationCoordinate2D(latitude: lat, longitude: long))
-            if atm.atmError == "да" {
+            if atmArray.atmError == "да" {
                 marker.icon = GMSMarker.markerImage(with: .green)
             } else {
                 marker.icon = GMSMarker.markerImage(with: .red)
             }
+            clusterManager?.add(marker)
             marker.map = mapView
-            marker.title = atm.adressType + atm.adress + atm.house
-            marker.snippet = "Время работы: \(atm.workTime)"
+            marker.title = atmArray.adressType + atmArray.adress + atmArray.house
+            marker.snippet = "Время работы: \(atmArray.workTime)"
+            marker.userData = atmArray
             let camera = GMSCameraPosition(latitude: lat, longitude: long, zoom: 8)
             mapView.animate(to: camera)
             mapView.selectedMarker = marker
             mapView.selectedMarker = nil
+            mapView.clear()
+            clusterManager?.cluster()
         }
     }
     private func drawDepartmentsMarkers(from array: [DepartmentModel]) {
-        array.forEach { dep in
-            guard let lat = Double(dep.gpsX),
-                  let long = Double(dep.gpsY)
+        array.forEach { depArray in
+            guard let lat = Double(depArray.gpsX),
+                  let long = Double(depArray.gpsY)
             else { return }
             let marker = GMSMarker(position: CLLocationCoordinate2D(latitude: lat, longitude: long))
             marker.map = mapView
-            marker.title = dep.filialName + dep.nameType + dep.city + dep.streetType + dep.street + dep.homeNumber
+            clusterManager?.add(marker)
+            marker.title = depArray.filialName + depArray.nameType + depArray.city + depArray.streetType + depArray.street + depArray.homeNumber
             marker.icon = GMSMarker.markerImage(with: .purple)
+            marker.userData = depArray
             let camera = GMSCameraPosition(latitude: lat, longitude: long, zoom: 8)
             mapView.animate(to: camera)
             mapView.selectedMarker = marker
             mapView.selectedMarker = nil
+            mapView.clear()
+            clusterManager?.cluster()
         }
     }
     
     private func drawMarkersFor(selectedCity: String) {
         mapView.clear()
+        clusterManager?.clearItems()
         spinnerView.startAnimating()
+        
         switch selectedFilter {
             case .atm:
                 getATMs(city: selectedCity) { [weak self] data in
@@ -180,7 +215,7 @@ extension MapViewController {
             self.atmsArray = data
             completion(data)
         } failure: {
-            print("Error")
+            self.showAlert()
         }
     }
     
@@ -190,7 +225,7 @@ extension MapViewController {
             self.departmentsArray = data
             completion(data)
         } failure: {
-            print("Error")
+            self.showAlert()
         }
     }
     
@@ -205,7 +240,7 @@ extension MapViewController {
             self.dispatchGroup.leave()
             print("leave")
         } failure: {
-            print("Error")
+            self.showAlert()
         }
         
         dispatchGroup.enter()
@@ -216,7 +251,7 @@ extension MapViewController {
             self.dispatchGroup.leave()
             print("leave")
         } failure: {
-            print("Error")
+            self.showAlert()
         }
         
         dispatchGroup.notify(queue: .main) {
@@ -224,6 +259,20 @@ extension MapViewController {
             self.getCities(self.atmsArray)
             self.spinnerView.stopAnimating()
         }
+    }
+    
+    private func calculateDishCollectionViewCellSize() -> CGSize {
+        let cellWidth = (UIScreen.main.bounds.width / 3 - 10)
+        let cellHeight = cellWidth * 0.4
+        
+        return CGSize(width: cellWidth, height: cellHeight)
+    }
+    
+    private func showAlert() {
+        let alert = UIAlertController(title: "Error", message: "No ATMs or Departments found in the selected region", preferredStyle: .alert)
+        let okBtn = UIAlertAction(title: "Ok", style: .default)
+        alert.addAction(okBtn)
+        present(alert, animated: true)
     }
 }
 
@@ -319,5 +368,66 @@ extension MapViewController: UICollectionViewDataSource {
 // MARK: - Extension MapViewController + UICollectionViewDelegateFlowLayout
 
 extension MapViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        calculateDishCollectionViewCellSize()
+    }
+}
 
+extension MapViewController {
+    private func createRadiusCircle() {
+        mapView.clear()
+        clusterManager?.clearItems()
+        spinnerView.startAnimating()
+        guard let myPosition = mapView.myLocation else { return }
+        guard let myPositionCoordinates = mapView.myLocation?.coordinate else { return }
+        let circle = GMSCircle(position: myPosition.coordinate, radius: 5000)
+        circle.fillColor = UIColor.green.withAlphaComponent(0.1)
+        circle.map = mapView
+        
+        CurrencyExchangeProvider().getATMs { result in
+            result.forEach { atmsArray in
+                guard let lat = Double(atmsArray.gpsX),
+                      let long = Double(atmsArray.gpsY)
+                else { return }
+                self.createMarker(coordinate: CLLocationCoordinate2D(latitude: lat, longitude: long), position: myPosition)
+            }
+        } failure: {
+            self.spinnerView.stopAnimating()
+            self.showAlert()
+        }
+        
+        CurrencyExchangeProvider().getDepartments { result in
+            result.forEach { depArray in
+                guard let lat = Double(depArray.gpsX),
+                      let long = Double(depArray.gpsY)
+                else { return }
+                self.createMarker(coordinate: CLLocationCoordinate2D(latitude: lat, longitude: long), position: myPosition)
+                let camera = GMSCameraPosition(latitude: myPositionCoordinates.latitude, longitude: myPositionCoordinates.longitude, zoom: 20)
+                self.mapView.animate(to: camera)
+                self.spinnerView.stopAnimating()
+            }
+        } failure: {
+            self.spinnerView.stopAnimating()
+            self.showAlert()
+        }
+    }
+    
+    private func createMarker(coordinate: CLLocationCoordinate2D, position: CLLocation) {
+        let distance = position.distance(from: CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude))
+        if distance < 5000 {
+            let marker = GMSMarker(position: CLLocationCoordinate2D(latitude: coordinate.latitude, longitude: coordinate.longitude))
+            marker.map = mapView
+        }
+    }
+    
+    @objc private func nearestATMsButtonDidTap(sender: UIButton) {
+        switch sender.isSelected {
+            case true:
+                createRadiusCircle()
+            case false:
+                guard let cityIndex = selectedCityIndex else { return }
+                self.drawMarkersFor(selectedCity: cities[cityIndex.row])
+        }
+        sender.isSelected.toggle()
+    }
 }
