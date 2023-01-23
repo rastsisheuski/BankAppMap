@@ -10,14 +10,15 @@ import UIKit
 class GemsViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var filterButton: UIButton!
     
     private var gemsArray = [GemModel]()
+    private var sortedButton = UIBarButtonItem()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupTableView()
+        setupNavigationBar()
         registerCell()
         getData()
     }
@@ -25,6 +26,15 @@ class GemsViewController: UIViewController {
     private func setupTableView() {
         tableView.dataSource = self
         tableView.delegate = self
+    }
+    
+    private func setupNavigationBar() {
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.tintColor = .systemYellow
+        navigationItem.title = "Gems"
+        navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.systemYellow, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 45, weight: .bold) as Any]
+        sortedButton = UIBarButtonItem(image: UIImage(systemName: "arrow.up.arrow.down"), style: .done, target: self, action: #selector(sortedButtonDidTap(sender:)))
+        navigationItem.rightBarButtonItem = sortedButton
     }
     
     private func registerCell() {
@@ -45,23 +55,13 @@ class GemsViewController: UIViewController {
     
     private func sortedToHeighest() {
         gemsArray.sort { $0.cost > $1.cost }
-        filterButton.setTitle("Sorted to heighest", for: .normal)
+        sortedButton.title = "Sorted to heighest"
     }
     
     private func sortedToLowest() {
         gemsArray.sort { $0.cost < $1.cost }
-        filterButton.setTitle("Sorted to lowest", for: .selected)
-    }
-    
-    @IBAction func filterButtonDidTap(_ sender: UIButton) {
-        switch sender.isSelected {
-            case true:
-                sortedToHeighest()
-            case false:
-                sortedToLowest()
-        }
-        sender.isSelected.toggle()
-        tableView.reloadData()
+        sortedButton.title = "Sorted to lowest"
+        navigationItem.rightBarButtonItem?.title = "Sorted to lowest"
     }
 }
 
@@ -79,4 +79,17 @@ extension GemsViewController: UITableViewDataSource {
 
 extension GemsViewController: UITableViewDelegate {
     
+}
+
+extension GemsViewController {
+    @objc private func sortedButtonDidTap(sender: UIBarButtonItem) {
+        switch sender.isSelected {
+            case true:
+                sortedToHeighest()
+            case false:
+                sortedToLowest()
+        }
+        sender.isSelected.toggle()
+        tableView.reloadData()
+    }
 }
